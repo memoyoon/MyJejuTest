@@ -18,7 +18,7 @@ const ProductList = () => {
         setProductInfos(res.message);
       });
   }, [location]);
-
+  console.log(productInfos);
   return (
     <ProductListWrap>
       <ProductFilterWrap>

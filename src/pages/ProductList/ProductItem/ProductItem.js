@@ -12,9 +12,9 @@ const ProductItem = ({ productInfo }) => {
     navigate(`/detail/${productInfo.id}`);
   };
   return (
-    <ProductItemWrap onClick={goToDetail}>
+    <ProductItemWrap>
       <ProductImgSlider productInfo={productInfo} />
-      <ProductItemInfo productInfo={productInfo} />
+      <ProductItemInfo goToDetail={goToDetail} productInfo={productInfo} />
     </ProductItemWrap>
   );
 };
