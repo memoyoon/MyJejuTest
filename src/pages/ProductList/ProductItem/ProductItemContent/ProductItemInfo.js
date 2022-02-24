@@ -23,7 +23,7 @@ const ProductItemInfo = ({ productInfo }) => {
           <FontAwesomeIcon icon={faStar} className="star" />
           <ProductInfoRatingTextWrap>
             <ProductInfoRatingNumber>
-              {productInfo.price}
+              {Number(productInfo.price).toLocaleString()}
             </ProductInfoRatingNumber>
             <ProductInfoReviewCount> (후기 29개)</ProductInfoReviewCount>
           </ProductInfoRatingTextWrap>
