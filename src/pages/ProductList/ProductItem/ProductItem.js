@@ -6,7 +6,6 @@ import ProductItemInfo from './ProductItemContent/ProductItemInfo';
 
 const ProductItem = ({ productInfo }) => {
   const navigate = useNavigate();
-  console.log(productInfo);
 
   const goToDetail = () => {
     navigate(`/detail/${productInfo.id}`);

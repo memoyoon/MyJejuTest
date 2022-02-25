@@ -8,7 +8,7 @@ function MyPageReservation() {
   const [detailInformation, setDetailInformation] = useState([]);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/users/mypage`, {
+    fetch(`${BASE_URL}/users/reservationinfo`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -16,7 +16,10 @@ function MyPageReservation() {
       },
     })
       .then(res => res.json())
-      .then(data => setDetailInformation(data.result));
+      .then(data => {
+        // console.log(data);
+        setDetailInformation(data.result);
+      });
   }, []);
   // 모두 머지됐을 때
 
@@ -51,7 +54,7 @@ function MyPageReservation() {
                 <InformationList>
                   <InformationListTitle>숙소 이름</InformationListTitle>
                   <div>
-                    {detailInformation &&
+                    {detailInformation[0] &&
                       detailInformation[0].accommodation_name}
                   </div>
                 </InformationList>
@@ -59,7 +62,7 @@ function MyPageReservation() {
                   <InformationListTitle>결제 금액</InformationListTitle>
                   <div>
                     ₩{' '}
-                    {detailInformation &&
+                    {detailInformation[0] &&
                       (+detailInformation[0].price).toLocaleString()}
                   </div>
                 </InformationList>
@@ -68,13 +71,13 @@ function MyPageReservation() {
                   <div>
                     <span>
                       어른:{' '}
-                      {detailInformation &&
+                      {detailInformation[0] &&
                         detailInformation[0].number_of_adults}
                       명 /{' '}
                     </span>
                     <span>
                       아이:{' '}
-                      {detailInformation &&
+                      {detailInformation[0] &&
                         detailInformation[0].number_of_children}
                       명
                     </span>
@@ -83,13 +86,14 @@ function MyPageReservation() {
                 <InformationList>
                   <InformationListTitle>체크인 날짜</InformationListTitle>
                   <div>
-                    {detailInformation && detailInformation[0].check_in_date}
+                    {detailInformation[0] && detailInformation[0].check_in_date}
                   </div>
                 </InformationList>
                 <InformationList>
                   <InformationListTitle>체크아웃 날짜</InformationListTitle>
                   <div>
-                    {detailInformation && detailInformation[0].check_out_date}
+                    {detailInformation[0] &&
+                      detailInformation[0].check_out_date}
                   </div>
                 </InformationList>
               </InformationLists>
